@@ -1,0 +1,104 @@
+body, div, nav, ul, li, header, footer, h1, h2, h3, h4, h5, p {
+	margin: 0;
+	padding: 0;
+}
+body {
+	background-color: #17161D;
+	color: #fff;
+}
+a {
+	text-decoration: none;
+	color: #000;
+}
+h2, h3 {
+	color: #5B72B6;
+}
+h3 {
+	margin: 10px auto;
+}
+p {
+	color: #fff;
+}
+.wrapper {
+	width: 960px;
+	margin: 0 auto;
+}
+.wrapper:after, #main-nav:after {
+	content: "";
+	clear: both;
+	display: block;
+}
+
+/* for header */
+#header {
+	width: 100%;
+	background-color: #323a45;
+	border-bottom: 2px solid #00b894;
+}
+#header:after {
+	content: "";
+	clear: both;
+	display: block;
+}
+	#logo-holder {
+		width: 40%;
+		margin: 0 auto;
+		padding: 10px 30px;
+		text-align: center;
+	}
+		#logo-holder #logo {
+			width: 100%;
+			padding: 15px;
+			font-family: Trebuchet MS;
+			font-size: 35px;
+			color: #B6B6BB;
+			transition: .2s ease all;
+		}
+			#logo-holder #logo:hover {
+				color: #00b894;
+				transform: scale(1.1);
+			}
+
+#main-pic-holder {
+	width: 97%;
+	height: 500px;
+	margin: 10px auto;
+}
+	#main-pic-holder img {
+		width: 100%;
+		height: 97%;
+		box-shadow: 0 0 7px #fff;
+	}
+
+/* for sidebar content - main navigation */
+aside {
+	width: 25%;
+	margin: 7px auto;
+	float: left;
+	border-right: 2px solid #323a45;
+}
+	#main-nav {
+		width: 90%;
+		margin: 0 auto;
+		padding: 10px 0;
+	}
+		#main-nav ul {
+			list-style: none;
+		}
+			#main-nav ul li {
+				padding: 15px 5px;
+			}
+			#main-nav ul li:hover {
+				border-bottom: 1px solid #3c3c3c;
+			}
+				#main-nav ul li a {
+					font-family: Trebuchet MS;
+					font-size: 18px;
+					color: #bfbfbf;
+					font-weight: bold;
+					padding: 10px 7px;
+					transition: .2s ease all;
+				}
+				#main-nav ul li a:hover {
+					color: #00b894;
+				}

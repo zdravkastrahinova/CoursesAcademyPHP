@@ -1,0 +1,172 @@
+.right {
+	float: right;
+	width: 73%;
+	margin: 7px auto;
+}
+	.right p {
+		padding: 7px 10px; 
+	}
+	.right h2 {
+		margin-left: 12px;
+		padding: 10px 0;
+	}
+	.right textarea {
+		margin: 5px 10px;
+		padding: 10px;
+		height: 81px;
+		width: 164px;
+	}
+	.right h3, .right h4 {
+		margin: 10px 12px;
+	}
+.right:after {
+	content: "";
+	clear: both;
+	display: block;
+}
+
+.error {
+	color: #D82323;
+}
+
+/* for courses */
+#courses, #users, #comments {
+	width: 99%;
+	margin: 3px auto;
+	float: right;
+	transition: .2s ease all;
+}
+	#courses h2, #users h2, #comments h2 {
+		font-family: Trebuchet MS;
+	}
+	.course-content {
+		width: 43%;
+		float: left;
+		padding: 10px;
+		margin: 10px;
+		border: 1px solid #323a45;
+		box-shadow: 2px 0px 2px #3c3c3c;
+		font-size: 18px;
+		opacity:0.75;
+		transition: .2s ease all;
+	}
+		.course-content h3 {
+			margin: 5px 0px 5px 3px;
+			padding: 3px 0px 10px 0px;
+			border-bottom: 1px solid #bfbfbf;
+			font-family: Trebuchet MS;
+		}
+		.course-content h5 {
+			color: #B7B1D8;
+		}
+		.course-content p, .comment-content p {
+			margin: 7px auto;
+		}
+		.course-content a, #courses a h3, #users a, #users a h3, #comments a, #comments a h3 {
+			color: #bfbfbf;
+		}
+			.course-content a:hover, #users a:hover, #comments a:hover {
+				font-weight: bold;
+				color: #5B72B6;
+			}
+			#courses a h3:hover, #users a h3:hover, #comments a h3:hover {
+				color: #5B72B6;
+			}
+		.course-content:hover {
+			cursor: pointer;
+			opacity:1;
+			transform:scale(1.01);
+		}
+		section:after{
+			content: "";
+			clear: both;
+			display: block;
+		}
+
+/* for users */
+.user-content {
+	width: 80%;
+	margin: 10px auto;
+	padding: 0 10px;
+	border: 1px solid #3c3c3c;
+	box-shadow: 2px 0px 2px #3c3c3c;
+}
+	.user-content ul {
+		list-style: none;
+		width: 70%;
+		margin: 10px auto;
+	}
+		.user-content h4 {
+			margin:10px;
+			padding:7px;
+		}
+		.user-content ul li {
+			margin: 5px 20px;
+			padding: 3px 10px;
+		}
+
+	.user-data {
+		border-bottom: 1px solid #bfbfbf;
+	}
+		.user-data h3 {
+			width: 40%;
+			float: left;
+			margin: 5px 0px 5px 50px;
+			padding:10px;
+		}
+		.user-data a {
+			margin:7px auto;
+			padding:10px;
+			float:left;
+		}
+		.user-data:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+/* for comments */
+	.comment-content {
+		width: 80%;
+		margin: 10px 0;
+		padding: 10px 0;
+		border-bottom: 2px solid #323a45;
+	}
+		.comment-content h3 span {
+			font-size: 16px;
+			padding-left: 10px;
+			font-weight: bold;
+			color: #ccc;
+		}
+		.comment-content a {
+			margin: 5px 7px 5px 12px;
+		}
+		.view-comments {
+			margin: 5px 0px 5px 3px;
+		}
+
+/* for form -> add/edit items */		
+	.form {
+		margin: 3px 10px;
+	}
+		.form input, .form select {
+			margin: 5px 0px 5px 10px;
+			padding: 7px;
+			border-radius: 7px/70px;
+			box-shadow: 1px 0px 1px #000;
+		}
+			.form select {
+				width: 25%;
+			}
+			.form input.submit {
+				width: 15%;
+				margin-left: 15px;
+				color: #000;
+				transition: .3s ease all;
+			}
+				.form input.submit:hover {
+					color: #00b894;
+					background-color: #17161d;
+					border: 2px solid #ccc;
+					cursor: pointer;
+					transform: scale(1.1);
+				}

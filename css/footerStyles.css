@@ -1,0 +1,32 @@
+/* for footer */
+#footer {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #323a45;
+	border-top: 2px solid #00b894;
+}
+#footer:after {
+	content: "";
+	clear: both;
+	display: block;
+}
+	#footer-nav {
+		width: 50%;
+		margin: 0 auto;
+	}
+		#footer-nav ul {
+			list-style: none;
+		}
+			#footer-nav ul li {
+				float: left;
+				padding: 24px 20px;
+				font-family: Trebuchet MS;
+				font-size: 17px;
+			}
+				#footer-nav ul li a {
+					color: #bfbfbf;
+					transition: .3s ease all;
+				}
+					#footer-nav ul li a:hover {
+						color: #00b894;
+					}
