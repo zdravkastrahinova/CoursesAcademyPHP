@@ -40,6 +40,19 @@
             return null;
         }
 
+        public  function getAllExceptLoggedUser($loggedUserId) {
+            $allUsers = $this->getAll();
+            $users = array();
+
+            foreach ($allUsers as $user) {
+                if($user->getId() != $loggedUserId) {
+                    array_push($users, $user);
+                }
+            }
+
+            return $users;
+        }
+
         public function getAll() {
             $result = $this->connection->query("SELECT * FROM `users`");
 

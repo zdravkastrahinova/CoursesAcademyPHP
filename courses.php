@@ -3,6 +3,7 @@
 	require '/includes/sidebar.php';
 	require '/repositories/courses_repository.php';
 	require '/repositories/users_repository.php';
+	require '/repositories/users_courses_repository.php';
 ?>
 
 	<div class="right">
@@ -15,9 +16,12 @@
 					$usersRepo = new UsersRepository();
 					$loggedUser = $usersRepo->getById($_SESSION["loggedUserId"]);
 
-					if ($loggedUser->getIsAdmin()) {
+					if ($loggedUser->getIsAdmin() == true) {
 						echo "<a href=\"add_course.php\"><h3>Add new course</h3></a>";
 					}
+
+					$usersCoursesRepo = new UsersCoursesRepository();
+					$asignedCourses = $usersCoursesRepo->getCoursesByUserId($loggedUser->getId());
 				}
 
 				$coursesRepo = new CoursesRepository();
@@ -31,10 +35,15 @@
 					<a href="comments.php?course_id=<?= $c->getId()?>" class="view-comments">View comments</a>
 					<?php
 						if ($loggedUser !== null) :
+							if(in_array($c,$asignedCourses) == false) {
+								echo '| <a href="join_course.php?id='.$c->getId().'">Join to</a>';
+							}
+							else {
+								echo '| <p class="join-course">Joined</p>';
+							}
 					?>
-						| <a href="join_course.php?id=<?= $c->getId()?>">Join</a>
 						<?php
-							if ($loggedUser->getIsAdmin()) :
+							if ($loggedUser->getIsAdmin() == true) :
 						?>
 							| <a href="edit_course.php?id=<?= $c->getId()?>">Edit</a> |
 							<a href="delete_course.php?id=<?= $c->getId()?>">Delete</a>

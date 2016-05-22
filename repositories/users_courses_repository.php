@@ -1,6 +1,4 @@
 <?php
-    require 'models/course.php';
-
     class UsersCoursesRepository {
 
         private $connection;
@@ -41,5 +39,24 @@
 
             $stmt->execute();
         }
+
+        function deleteAsignedCoursesByUserId($user_id) {
+            $query = "DELETE FROM `users_courses` WHERE user_id=?";
+
+            $stmt = $this->connection->prepare($query);
+            $stmt->bind_param("i", $user_id);
+
+            $stmt->execute();
+        }
+
+        function checkIfCourseIsAsigned($user_id, $course_id) {
+            $asignedCourses = $this->getCoursesByUserId($user_id);
+            $founded = false;
+            foreach ($asignedCourses as $a) {
+                if ($a->getId() == $course_id) {
+                    $founded = true;
+                }
+            }
+            return $founded;
+        }
     }
-?>

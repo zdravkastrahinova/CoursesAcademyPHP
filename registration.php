@@ -30,6 +30,7 @@
         foreach ($users as $u) {
             if ($u->getUsername() == $username) {
                 $errorMsg = "Username is already taken.";
+
                 header("Location: registration.php?errorMsg=$errorMsg");
                 exit();
             }
@@ -51,7 +52,7 @@
             <form method="POST">
                 <p class="error">
                     <?php
-                        if (isset($_SESSION["loggedUserId"])) {
+                        if (isset($_SESSION["loggedUserId"]) && $_SESSION["loggedUserIsAdmin"] == false) {
                             header("Location: index.php");
                             exit();
                         }

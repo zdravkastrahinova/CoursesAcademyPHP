@@ -2,6 +2,7 @@
     require '/includes/header.php';
     require '/includes/sidebar.php';
     require '/filters/filter.php';
+    require '/models/course.php';
     require '/repositories/users_courses_repository.php';
 ?>
 

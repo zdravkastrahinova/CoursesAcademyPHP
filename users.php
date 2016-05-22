@@ -3,6 +3,7 @@
     require '/includes/sidebar.php';
     require '/filters/access_filter.php';
     require '/repositories/users_repository.php';
+    require '/models/course.php';
     require '/repositories/users_courses_repository.php';
 ?>
 
@@ -13,15 +14,22 @@
 
             <?php
                 $usersRepo = new UsersRepository();
-                $users = $usersRepo->getAll();
+                $users = $usersRepo->getAllExceptLoggedUser($_SESSION["loggedUserId"]);
                 foreach ($users as $u) :
             ?>
 
                 <article class="user-content">
                     <div class="user-data">
                         <h3><?= $u->getUsername() ?></h3>
-                        <a href="edit_user.php?id=<?= $u->getId()?>">Edit</a>
-                        <a href="delete_user.php?id=<?= $u->getId()?>">Delete</a>
+                        <?php
+                            if($u->getIsAdmin() == false) {
+                                echo '<a href="edit_user.php?id='.$u->getId().'">Edit</a>';
+                                echo '<a href="delete_user.php?id='.$u->getId().'">Delete</a>';
+                            }
+                            else {
+                                echo '<span><h4>Role: Admin</h4></span>';
+                            }
+                        ?>
                     </div>
                     <ul>
                         <h4>Joined Courses</h4>

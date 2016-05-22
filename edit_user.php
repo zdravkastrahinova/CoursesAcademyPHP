@@ -9,8 +9,17 @@
     $usersRepo = new UsersRepository();
     $user = $usersRepo->getById($_GET["id"]);
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') :
+    if ($user == null) {
+        header("Location: users.php");
+        exit();
+    }
 
+    if($user->getIsAdmin() == true) {
+        header("Location: userErrorMessage.php");
+        exit();
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') :
         $user->setUsername(htmlspecialchars(trim($_POST["username"])));
         $user->setIsAdmin(($_POST["role"]));
 
