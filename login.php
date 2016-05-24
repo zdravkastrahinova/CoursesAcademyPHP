@@ -27,6 +27,7 @@
         }
 
         $_SESSION["loggedUserId"] = $user->getId();
+        $_SESSION["loggedUserUsername"] = $user->getUsername();
         $_SESSION["loggedUserIsAdmin"] = $user->getIsAdmin();
 
         header("Location: index.php");

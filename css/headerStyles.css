@@ -84,6 +84,7 @@ aside {
 	}
 		#main-nav ul {
 			list-style: none;
+			font-family: Trebuchet MS;
 		}
 			#main-nav ul li {
 				padding: 15px 5px;
@@ -92,7 +93,6 @@ aside {
 				border-bottom: 1px solid #3c3c3c;
 			}
 				#main-nav ul li a {
-					font-family: Trebuchet MS;
 					font-size: 18px;
 					color: #bfbfbf;
 					font-weight: bold;
@@ -102,3 +102,24 @@ aside {
 				#main-nav ul li a:hover {
 					color: #00b894;
 				}
+
+/* greeting */
+#greeting {
+	font-family: Trebuchet MS;
+	padding: 5px 15px;
+}
+	#greeting h3 {
+		margin: 0;
+		padding: 10px 7px;
+		color: #bfbfbf;
+		border-bottom: 2px solid #323a45;
+	}
+		#greeting h3 span {
+			color: #5B72B6;
+			transition: .2s ease all;
+		}
+			#greeting h3 span:hover {
+				cursor: pointer;
+				text-shadow: 1px 0px #323a45;
+				font-size: 18px;
+			}

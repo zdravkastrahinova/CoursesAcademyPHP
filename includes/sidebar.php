@@ -1,4 +1,9 @@
 <aside id="sidebar">
+    <?php
+        if(isset($_SESSION["loggedUserId"])) {
+            echo '<div id="greeting"><h3>Hello, <span>'. $_SESSION["loggedUserUsername"] .'</span></h3></div>';
+        }
+    ?>
     <nav id="main-nav">
         <ul>
             <li><a href="index.php">Home</a></li>
