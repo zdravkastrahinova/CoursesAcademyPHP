@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2016 at 04:28 PM
+-- Generation Time: May 25, 2016 at 04:47 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.5
 
@@ -39,8 +39,8 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `course_id`, `user_id`, `title`, `content`) VALUES
-(10, 5, 1, 'New comment', 'New test comment'),
-(13, 5, 3, 'My test comment', 'Comment for English course');
+(10, 5, 1, 'Useful CAE English Course', 'Useful intensive course which improves your skills.'),
+(13, 5, 3, 'Beginner course', 'English course for beginners who want to improve their skills.');
 
 -- --------------------------------------------------------
 
@@ -60,7 +60,7 @@ CREATE TABLE `courses` (
 
 INSERT INTO `courses` (`id`, `title`, `content`) VALUES
 (5, 'CAE', 'Serificate Level'),
-(9, 'English course B', 'Intensive English course for beginners');
+(9, 'B1 Course', 'Intensive English course for beginners');
 
 -- --------------------------------------------------------
 
@@ -81,9 +81,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `isAdmin`) VALUES
 (1, 'admin', 'adminpass', 1),
-(2, 'user', 'userpass', 0),
-(3, 'test', 'test', 1),
-(4, 'dodo', 'dodo', 0);
+(3, 'test', 'testpass', 1),
+(4, 'dona', 'dpass', 0);
 
 -- --------------------------------------------------------
 
@@ -101,18 +100,9 @@ CREATE TABLE `users_courses` (
 --
 
 INSERT INTO `users_courses` (`user_id`, `course_id`) VALUES
-(1, 2),
-(1, 3),
-(2, 2),
-(1, 4),
 (1, 5),
-(2, 3),
-(2, 4),
-(4, 3),
-(4, 6),
-(1, 3),
-(1, 3),
-(1, 6);
+(4, 5),
+(4, 9);
 
 --
 -- Indexes for dumped tables
@@ -155,7 +145,7 @@ ALTER TABLE `courses`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
