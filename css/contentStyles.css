@@ -4,7 +4,8 @@
 	margin: 7px auto;
 }
 	.right .redirect {
-		margin: 10px 12px;
+		display: inline-block;
+		padding: 5px 12px;
 		color: #ccc;
 		transition: .3s ease all;
 	}
@@ -134,6 +135,11 @@
 		.user-content ul li {
 			margin: 5px 20px;
 			padding: 3px 10px;
+		}
+		.user-content .alert-info {
+			width: 87%;
+			color: #fff;
+			font-family: Times New Roman;
 		}
 
 	.user-data {
