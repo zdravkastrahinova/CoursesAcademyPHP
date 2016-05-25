@@ -40,7 +40,7 @@
             $stmt->execute();
         }
 
-        function deleteAsignedCoursesByUserId($user_id) {
+        function deleteAssignedCoursesByUserId($user_id) {
             $query = "DELETE FROM `users_courses` WHERE user_id=?";
 
             $stmt = $this->connection->prepare($query);
@@ -49,14 +49,16 @@
             $stmt->execute();
         }
 
-        function checkIfCourseIsAsigned($user_id, $course_id) {
-            $asignedCourses = $this->getCoursesByUserId($user_id);
+        function checkIfCourseIsAssigned($user_id, $course_id) {
             $founded = false;
+            $asignedCourses = $this->getCoursesByUserId($user_id);
+
             foreach ($asignedCourses as $a) {
                 if ($a->getId() == $course_id) {
                     $founded = true;
                 }
             }
+
             return $founded;
         }
     }

@@ -16,7 +16,7 @@
             mysqli_set_charset($this->connection, 'utf8');
         }
 
-        public function getById($id) {
+        function getById($id) {
             $users = $this->getAll();
 
             foreach ($users as $u) {
@@ -28,7 +28,7 @@
             return null;
         }
 
-        public function getByUsernameAndPassword($username, $password) {
+        function getByUsernameAndPassword($username, $password) {
             $users = $this->getAll();
 
             foreach ($users as $u) {
@@ -40,10 +40,10 @@
             return null;
         }
 
-        public  function getAllExceptLoggedUser($loggedUserId) {
+        function getAllExceptLoggedUser($loggedUserId) {
             $allUsers = $this->getAll();
+            
             $users = array();
-
             foreach ($allUsers as $user) {
                 if($user->getId() != $loggedUserId) {
                     array_push($users, $user);
@@ -53,7 +53,7 @@
             return $users;
         }
 
-        public function getAll() {
+        function getAll() {
             $result = $this->connection->query("SELECT * FROM `users`");
 
             $users = array();
