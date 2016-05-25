@@ -1,12 +1,10 @@
 <?php
 	require '/includes/header.php';
 	require '/includes/sidebar.php';
-	require  '/filters/access_filter.php';
-?>
-
-<?php
+	require '/filters/access_filter.php';
     require '/repositories/comments_repository.php';
     require '/repositories/courses_repository.php';
+
     $errorMsg = "";
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') :
@@ -17,14 +15,12 @@
         $course = $coursesRepo->getById($_GET["course_id"]);
 
         if ($course == null) {
-            header ("Location: courses.php");
-            exit();
+            header("Location: courses.php");
         }
 
         if (empty($title) || empty($content)) {
             $errorMsg = "All fields are required.";
             header("Location: add_comment.php?errorMsg=$errorMsg");
-            exit();
         }
 
         $commentsRepo = new CommentsRepository();
@@ -60,6 +56,7 @@
             </div>
         </div>
 
-    <?php endif; ?>
-
-<?php require '/includes/footer.php'; ?>        
+<?php
+    endif;
+    require '/includes/footer.php';
+?>

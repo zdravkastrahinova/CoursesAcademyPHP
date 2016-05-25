@@ -21,7 +21,7 @@
 					}
 
 					$usersCoursesRepo = new UsersCoursesRepository();
-					$asignedCourses = $usersCoursesRepo->getCoursesByUserId($loggedUser->getId());
+					$assignedCourses = $usersCoursesRepo->getCoursesByUserId($loggedUser->getId());
 				}
 
 				$coursesRepo = new CoursesRepository();
@@ -33,21 +33,21 @@
 					<h3><?= $c->getTitle() ?></h3>
 					<p><?= $c->getContent() ?></p>
 					<a href="comments.php?course_id=<?= $c->getId()?>" class="view-comments">View comments</a>
+
 					<?php
 						if ($loggedUser !== null) :
-							if(in_array($c,$asignedCourses) == false) {
+							if(in_array($c,$assignedCourses) == false) {
 								echo '| <a href="join_course.php?id='.$c->getId().'">Join to</a>';
 							}
 							else {
 								echo '| <p class="join-course">Joined</p>';
 							}
-					?>
-						<?php
+
 							if ($loggedUser->getIsAdmin() == true) :
-						?>
-							| <a href="edit_course.php?id=<?= $c->getId()?>">Edit</a> |
-							<a href="delete_course.php?id=<?= $c->getId()?>">Delete</a>
-						<?php
+					?>
+								| <a href="edit_course.php?id=<?= $c->getId()?>">Edit</a> |
+								<a href="delete_course.php?id=<?= $c->getId()?>">Delete</a>
+					<?php
 							endif;
 						endif;
 					?>

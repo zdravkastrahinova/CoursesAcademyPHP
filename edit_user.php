@@ -2,21 +2,17 @@
     require '/includes/header.php';
     require '/includes/sidebar.php';
     require '/filters/access_filter.php';
-?>
-
-<?php
     require '/repositories/users_repository.php';
+
     $usersRepo = new UsersRepository();
     $user = $usersRepo->getById($_GET["id"]);
 
     if ($user == null) {
         header("Location: users.php");
-        exit();
     }
 
     if($user->getIsAdmin() == true) {
         header("Location: userErrorMessage.php");
-        exit();
     }
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') :
@@ -42,6 +38,7 @@
         </div>
     </div>
 
-    <?php endif; ?>
-
-<?php require '/includes/footer.php'; ?>
+<?php
+    endif;
+    require '/includes/footer.php';
+?>

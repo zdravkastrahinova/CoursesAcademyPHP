@@ -35,13 +35,18 @@
                         <h4>Joined Courses</h4>
                         <?php
                             $usersCoursesRepo = new UsersCoursesRepository();
-                            $asignedCourses = $usersCoursesRepo->getCoursesByUserId($u->getId());
-                            foreach ($asignedCourses as $a) :
+                            $assignedCourses = $usersCoursesRepo->getCoursesByUserId($u->getId());
+
+                            if (count($assignedCourses) == 0) :
+                                echo '<div class="alert-info">User has not joined to any course yet.</div>';
+                            else :
+                                foreach ($assignedCourses as $a) :
                             ?>
                                 <li><?= $a->getTitle() ?></li>
                             <?php
                                 endforeach;
-                            ?>
+                             endif;
+                        ?>
                     </ul>
                 </article>
 

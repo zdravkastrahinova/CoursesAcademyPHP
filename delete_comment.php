@@ -7,4 +7,4 @@
 	$courseId = $commentsRepo->getById($_GET["id"])->getCourseId();
 	$commentsRepo->delete($_GET['id']);
 
-header("Location: comments.php?course_id=" . $courseId);
+	header("Location: comments.php?course_id=" . $courseId);

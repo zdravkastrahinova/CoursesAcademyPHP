@@ -1,10 +1,8 @@
 <?php
     require '/includes/header.php';
     require '/includes/sidebar.php';
-?>
-
-<?php
     require '/repositories/users_repository.php';
+
     $errorMsg = "";
 
     if ($_SERVER["REQUEST_METHOD"] === 'POST') :
@@ -14,7 +12,6 @@
         if (empty($username) || empty($password)) {
             $errorMsg = "All fields are required.";
             header("Location: login.php?errorMsg=$errorMsg");
-            exit();
         }
 
         $usersRepo = new UsersRepository();
@@ -23,7 +20,6 @@
         if ($user == null) {
             $errorMsg = "Invalid username or password.";
             header("Location: login.php?errorMsg=$errorMsg");
-            exit();
         }
 
         $_SESSION["loggedUserId"] = $user->getId();
@@ -42,7 +38,6 @@
                     <?php
                         if (isset($_SESSION["loggedUserId"])) {
                             header("Location: index.php");
-                            exit();
                         }
                     
                         if (isset($_GET["errorMsg"])) {
@@ -57,6 +52,7 @@
         </div>
     </div>
 
-    <?php endif; ?>
-
-<?php require '/includes/footer.php'; ?>
+<?php
+    endif;
+    require '/includes/footer.php';
+?>

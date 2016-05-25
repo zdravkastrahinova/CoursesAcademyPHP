@@ -2,16 +2,13 @@
     require '/includes/header.php';
     require '/includes/sidebar.php';
     require '/filters/access_filter.php';
-?>
-
-<?php
     require '/repositories/comments_repository.php';
+
     $commentsRepo = new CommentsRepository();
     $comment = $commentsRepo->getById($_GET["id"]);
 
     if ($comment == null) {
         header("Location: courses.php");
-        exit();
     }
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') :
@@ -35,6 +32,6 @@
             </div>
         </div>
 
-    <?php endif; ?>
-
-<?php require '/includes/footer.php'; ?>
+<?php
+    endif;
+    require '/includes/footer.php'; ?>

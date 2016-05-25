@@ -1,10 +1,8 @@
 <?php 
     require '/includes/header.php';
     require '/includes/sidebar.php';
-?>
-
-<?php
     require '/repositories/users_repository.php';
+
     $errorMsg = "";
 
     if ($_SERVER["REQUEST_METHOD"] === 'POST') :
@@ -15,13 +13,11 @@
         if (empty($username) || empty($password) || empty($rePassword)) {
             $errorMsg = "All fields are required.";
             header("Location: registration.php?errorMsg=$errorMsg");
-            exit();
         }
 
         if ($password !== $rePassword) {
             $errorMsg = "Passwords do not match.";
             header("Location: registration.php?errorMsg=$errorMsg");
-            exit();
         }
 
         $usersRepo = new UsersRepository();
@@ -30,9 +26,7 @@
         foreach ($users as $u) {
             if ($u->getUsername() == $username) {
                 $errorMsg = "Username is already taken.";
-
                 header("Location: registration.php?errorMsg=$errorMsg");
-                exit();
             }
         }
 
@@ -54,7 +48,6 @@
                     <?php
                         if (isset($_SESSION["loggedUserId"]) && $_SESSION["loggedUserIsAdmin"] == false) {
                             header("Location: index.php");
-                            exit();
                         }
 
                         if (isset($_GET["errorMsg"])) {
@@ -70,6 +63,7 @@
         </div>
     </div>
 
-    <?php endif; ?>
-
-<?php require '/includes/footer.php'; ?>
+<?php
+    endif;
+    require '/includes/footer.php';
+?>

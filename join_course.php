@@ -6,9 +6,8 @@
 
     $usersCoursesRepo = new UsersCoursesRepository();
 
-    if($usersCoursesRepo->checkIfCourseIsAsigned(intval($_SESSION["loggedUserId"]), $_GET["id"]) == true) {
-        header("Location: errorAlreadyAsignedCourse.php");
-        exit();
+    if($usersCoursesRepo->checkIfCourseIsAssigned(intval($_SESSION["loggedUserId"]), $_GET["id"]) == true) {
+        header("Location: errorAlreadyAssignedCourse.php");
     }
     else {
         $usersCoursesRepo->insert(intval($_SESSION["loggedUserId"]), $_GET["id"]);

@@ -11,7 +11,6 @@
 
         if ($course == null) {
             header("Location: courses.php");
-            exit();
         }
 ?>
         <div class="right">
@@ -32,31 +31,34 @@
                     $commentsRepo = new CommentsRepository();
                     $comments = $commentsRepo->getCommentsByCourseId($_GET["course_id"]);
 
-                    $user = new User();
-                    foreach($comments as $comment):
-                        $user = $usersRepo->getById($comment->getUserId());
-
+                    if(count($comments) == 0) :
+                        echo '<div class="alert-info">No comments added.</div>';
+                    else :
+                        $user = new User();
+                        foreach($comments as $comment):
+                            $user = $usersRepo->getById($comment->getUserId());
+                    ?>
+                        <article class="comment-content">
+                            <h3><?= $comment->getTitle() ?> <span>posted by: <?= $user->getUsername() ?></span></h3>
+                            <p><?= $comment->getContent() ?></p>
+                            <?php
+                                if ($loggedUser != null && $loggedUser->getIsAdmin() == true) :
+                            ?>
+                                <a href="edit_comment.php?id=<?= $comment->getId()?>">Edit</a> |
+                                <a href="delete_comment.php?id=<?= $comment->getId()?>">Delete</a>
+                            <?php
+                                endif;
+                            ?>
+                        </article>
+                <?php
+                        endforeach;
+                    endif;
                 ?>
-                    <article class="comment-content">
-                        <h3><?= $comment->getTitle() ?> <span>posted by: <?= $user->getUsername() ?></span></h3>
-                        <p><?= $comment->getContent() ?></p>
-                        <?php
-                            if ($loggedUser != null && $loggedUser->getIsAdmin() == true) :
-                        ?>
-                            <a href="edit_comment.php?id=<?= $comment->getId()?>">Edit</a> |
-                            <a href="delete_comment.php?id=<?= $comment->getId()?>">Delete</a>
-                        <?php
-                            endif;
-                        ?>
-                    </article>
-                <?php endforeach; ?>
             </section>
         </div>
 <?php
     else:
         header("Location: courses.php");
-        exit();
-
     endif;
 
     require 'includes/footer.php';

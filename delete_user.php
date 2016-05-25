@@ -16,7 +16,7 @@
     }
     else {
         $usersCoursesRepo = new UsersCoursesRepository();
-        $usersCoursesRepo->deleteAsignedCoursesByUserId($user->getId());
+        $usersCoursesRepo->deleteAssignedCoursesByUserId($user->getId());
 
         $usersRepo->delete($user->getId());
         header('Location: users.php');

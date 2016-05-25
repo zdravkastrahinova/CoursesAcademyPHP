@@ -9,7 +9,6 @@
 
 	if ($course == null) {
 		header('Location: courses.php');
-		exit();
 	}
 
 	$commentsRepo = new CommentsRepository();

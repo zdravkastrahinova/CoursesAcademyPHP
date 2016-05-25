@@ -11,12 +11,12 @@
         <h2>My Courses</h2>
             <?php
                 $usersCoursesRepo = new UsersCoursesRepository();
-                $asignedCourses = $usersCoursesRepo->getCoursesByUserId(intval($_SESSION["loggedUserId"]));
+                $assignedCourses = $usersCoursesRepo->getCoursesByUserId(intval($_SESSION["loggedUserId"]));
 
-                if(count($asignedCourses) == 0) :
+                if(count($assignedCourses) == 0) :
                     echo '<div class="alert-info">You have not joined to any course yet.</div>';
                 else :
-                    foreach ($asignedCourses as $c) :
+                    foreach ($assignedCourses as $c) :
             ?>
 
                     <article class="course-content">

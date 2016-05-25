@@ -1,11 +1,9 @@
 <?php
 	require '/includes/header.php';
 	require '/includes/sidebar.php';
-	require  '/filters/access_filter.php';
-?>
-
-<?php
+	require '/filters/access_filter.php';
 	require '/repositories/courses_repository.php';
+
 	$errorMsg = "";
 
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') :
@@ -15,7 +13,6 @@
 		if (empty($title) || empty($content)) {
 			$errorMsg = "All fields are required.";
 			header("Location: add_course.php?errorMsg=$errorMsg");
-			exit();
 		}
 
 		$coursesRepo = new CoursesRepository();
@@ -49,6 +46,7 @@
 			</div>
 		</div>
 
-	<?php endif; ?>
-
-<?php require '/includes/footer.php'; ?>
+<?php
+	endif;
+	require '/includes/footer.php';
+?>
